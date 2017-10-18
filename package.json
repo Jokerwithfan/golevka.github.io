@@ -1,0 +1,22 @@
+{
+  "name": "golevkadesign.github.io",
+  "version": "0.0.0",
+  "description": "The personal website for Golevka.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/golevkadesign/golevkadesign.github.io.git"
+  },
+  "author": [
+    "Golevka <huangsamfisher@163.com>",
+    "Peach <scdzwyxst@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/golevkadesign/golevkadesign.github.io/issues"
+  },
+  "homepage": "https://github.com/golevkadesign/golevkadesign.github.io#readme"
+}
