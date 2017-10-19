@@ -1,0 +1,57 @@
+@import '../../node_modules/normalize.css/normalize.css';
+
+$s-safe-width: 1200px;
+
+/* Navbar */
+.primary-navbar {
+  position: relative;
+  margin: 40px auto 0;
+  width: $s-safe-width;
+  text-align: right;
+  a {
+    display: inline-block;
+    margin-left: 50px;
+    color: #4C4E5E;
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+    opacity: .6;
+    transition: opacity .3s;
+    &:hover {
+      opacity: 1;
+    }
+    &:first-child {
+      float: left;
+      margin-left: 0;
+    }
+  }
+  .anchor {
+    $width: 7px;
+    $height: 10px;
+    position: absolute;
+    left: 0;
+    bottom: -(16px + $height);
+    width: 0;
+    height: 0;
+    border: $width solid transparent;
+    border-top: $height solid #FD23E1;
+    border-bottom-width: $height;
+    overflow: hidden;
+  }
+}
+
+/* Icons */
+*[class^=icon-] {
+  position: relative;
+  top: -2px;
+  display: inline-block;
+  vertical-align: middle;
+  background: no-repeat center/100%;
+}
+.icon-home {
+  $size: 24px;
+  margin-right: 16px;
+  width: $size;
+  height: $size;
+  background-image: url('../img/icon_home.png');
+}

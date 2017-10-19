@@ -56,5 +56,8 @@
     "last 1 versions",
     "last 4 Android versions",
     "last 3 iOS versions"
-  ]
+  ],
+  "dependencies": {
+    "normalize.css": "^7.0.0"
+  }
 }
