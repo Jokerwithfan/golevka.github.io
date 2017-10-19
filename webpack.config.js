@@ -55,15 +55,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: './src/index.html'
+    })
   ]
 };
-
-if (process.env.NODE_ENV === 'production') {
-
-} else {
-  module.exports.plugins.push(new HtmlWebpackPlugin({
-    filename: 'index.html',
-    template: './src/index.html'
-  }));
-}
