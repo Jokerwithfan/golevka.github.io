@@ -4,6 +4,9 @@
   "description": "The personal website for Golevka.",
   "main": "index.js",
   "scripts": {
+    "start": "webpack-dev-server --hot --info=false --port=8090",
+    "build": "NODE_ENV=production webpack -p --progress --hide-modules",
+    "lint": "eslint --ext .js src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +21,40 @@
   "bugs": {
     "url": "https://github.com/golevkadesign/golevkadesign.github.io/issues"
   },
-  "homepage": "https://github.com/golevkadesign/golevkadesign.github.io#readme"
+  "homepage": "https://github.com/golevkadesign/golevkadesign.github.io#readme",
+  "devDependencies": {
+    "autoprefixer": "^7.1.5",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-import-resolver-webpack": "^0.8.3",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.8",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.2"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 1 versions",
+    "last 4 Android versions",
+    "last 3 iOS versions"
+  ]
 }
