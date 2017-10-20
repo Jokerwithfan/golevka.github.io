@@ -51,7 +51,11 @@ module.exports = {
             name: 'assets/img/[name]_[hash:7].[ext]'
           }
         }
-      }
+      },
+      {
+        test: /onepagescroll\.(min)?\.js$/,
+        use: ['exports-loader?onePageScroll', 'script-loader'],
+      },
     ]
   },
   plugins: [
