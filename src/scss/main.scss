@@ -8,10 +8,10 @@ $s-btn-height: 36px;
 /* Navbar */
 .primary-header {
   position: absolute;
+  z-index: 10;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
   .primary-navbar {
     position: relative;
     margin: 40px auto 0;
@@ -38,6 +38,7 @@ $s-btn-height: 36px;
       $width: 7px;
       $height: 10px;
       position: absolute;
+      z-index: 1;
       left: 0;
       bottom: -(16px + $height);
       width: 0;
@@ -66,6 +67,7 @@ main section {
       $height: 321px;
       content: '';
       position: absolute;
+      z-index: 1;
       top: 50%;
       left: 50%;
       margin-top: -$height/2;
@@ -74,18 +76,13 @@ main section {
       height: $height;
       background: url('../img/about_logo.png') no-repeat center/100%;
     }
-    .button {
-      position: absolute;
-      left: 50%;
-      bottom: 10%;
-      margin-left: -$s-btn-width/2;
-    }
   }
   /* About section */
   &.section-about {
     $content-height: 492px;
     .about-info {
       position: absolute;
+      z-index: 1;
       top: 50%;
       left: 160px;
       margin-top: -$content-height/2;
@@ -117,6 +114,7 @@ main section {
     .about-bust {
       $width: 350 / 492 * $content-height; // original picture size 350 * 492
       position: absolute;
+      z-index: 1;
       top: 50%;
       right: 0;
       margin-top: -$content-height/2;
@@ -127,6 +125,7 @@ main section {
     .about-triangle,
     .about-rect {
       position: absolute;
+      z-index: 2;
       opacity: 0;
       transform: translateY(-60px);
       transition: opacity 1s, transform 1s;
@@ -146,7 +145,7 @@ main section {
       width: $width;
       height: 210px;
       background: url('../img/about_triangle.png') no-repeat center/100%;
-      transition-delay: .15s;
+      transition-delay: .12s;
     }
     .about-rect {
       $width: 225px;
@@ -155,7 +154,7 @@ main section {
       width: $width;
       height: 245px;
       background: url('../img/about_rect.png') no-repeat center/100%;
-      transition-delay: .3s;
+      transition-delay: .24s;
     }
     &.active {
       .about-circle,
@@ -166,13 +165,111 @@ main section {
       }
     }
   }
-  // translate up when scroll down
+  // move up when scroll down
   &.active + .section-about {
     .about-circle,
     .about-triangle,
     .about-rect {
       transform: translateY(60px);
     }
+  }
+  /* Ability section */
+  &.section-ability {
+    $content-height: 400px;
+    .section-content {
+      width: $s-safe-width - (80 * 2);
+    }
+    .skill-panel {
+      $gap: 60px;
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      margin-top: -$content-height/2;
+      width: 33.3%;
+      height: $content-height;
+      padding: 140px $gap 0;
+      color: #2A2B33;
+      box-sizing: border-box;
+      background: no-repeat $gap 0/120px;
+      transform: translateY(-60px);
+      transition: transform 1s;
+      &:nth-child(2) {
+        transition-delay: .12s;
+      }
+      &:nth-child(3) {
+        transition-delay: .24s;
+      }
+      &:hover .panel-overlay {
+        opacity: 1;
+      }
+      h3 {
+        margin: 0 0 24px;
+        font-size: 20px;
+        line-height: 28px;
+      }
+      p {
+        font-size: 14px;
+        line-height: 20px;
+        opacity: .6;
+      }
+      .panel-overlay {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 30px 78px;
+        vertical-align: middle;
+        background: rgba(255,255,255,.9);
+        box-shadow: 20px 36px 60px rgba(0,0,0,.1);
+        opacity: 0;
+        transition: opacity .5s;
+        .skill-item {
+          margin-bottom: 32px;
+          h3 {
+            margin: 0 0 25px;
+            color: #2A2B33;
+            font-size: 18px;
+            line-height: 21px;
+          }
+        }
+        .progress-bar {
+          $height: 14px;
+          height: $height;
+          border: 2px solid #2A2B33;
+          border-radius: $height;
+          overflow: hidden;
+          .progress-inner {
+            height: $height;
+            background: rgba(42,43,51,.6);
+          }
+        }
+      }
+      &.ui-panel {
+        background-image: url('../img/ability_ui.png');
+      }
+      &.animation-panel {
+        left: 33.3%;
+        background-image: url('../img/ability_animation.png');
+      }
+      &.operation-panel {
+        left: 66.6%;
+        background-image: url('../img/ability_operation.png');
+      }
+    }
+    &.active {
+      .skill-panel {
+        transform: translateY(0);
+      }
+    }
+  }
+  // move up when scroll down
+  &.active + .section-ability .skill-panel {
+    transform: translateY(60px);
   }
 }
 
@@ -219,6 +316,13 @@ main section {
     box-shadow: 0 8px 40px rgba(255,0,144,.5);
     transition: box-shadow .3s;
   }
+  &.fixed-bottom-center {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 10%;
+    margin-left: -$s-btn-width/2;
+  }
 }
 
 /* Icons */
@@ -235,4 +339,40 @@ main section {
   width: $size;
   height: $size;
   background-image: url('../img/icon_home.png');
+}
+.icon-sketch,
+.icon-ps,
+.icon-flinto,
+.icon-ae,
+.icon-pr,
+.icon-painting,
+.icon-ai {
+  $size: 40px;
+  position: static;
+  top: 0;
+  margin-right: 8px;
+  width: $size;
+  height: $size;
+  vertical-align: bottom;
+}
+.icon-sketch {
+  background-image: url('../img/icon_sketch.png');
+}
+.icon-ps {
+  background-image: url('../img/icon_ps.png');
+}
+.icon-flinto {
+  background-image: url('../img/icon_flinto.png');
+}
+.icon-ae {
+  background-image: url('../img/icon_ae.png');
+}
+.icon-pr {
+  background-image: url('../img/icon_pr.png');
+}
+.icon-painting {
+  background-image: url('../img/icon_painting.png');
+}
+.icon-ai {
+  background-image: url('../img/icon_ai.png');
 }
