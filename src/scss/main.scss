@@ -72,13 +72,106 @@ main section {
       margin-left: -$width/2;
       width: $width;
       height: $height;
-      background: url('../img/logo.png') no-repeat center/100%;
+      background: url('../img/about_logo.png') no-repeat center/100%;
     }
     .button {
       position: absolute;
       left: 50%;
       bottom: 10%;
       margin-left: -$s-btn-width/2;
+    }
+  }
+  /* About section */
+  &.section-about {
+    $content-height: 492px;
+    .about-info {
+      position: absolute;
+      top: 50%;
+      left: 160px;
+      margin-top: -$content-height/2;
+      width: 545px;
+      height: $content-height;
+      padding: 120px 0 0 12px;
+      color: #2A2B33;
+      background: url('../img/title_about.png') no-repeat top left/350px;
+      h2 {
+        $gap: 10px;
+        margin: 0 0 8px;
+        font-size: 30px;
+        line-height: 42px;
+        letter-spacing: $gap;
+        text-indent: -2px;
+      }
+      h3 {
+        margin: 0 0 16px;
+        font-size: 16px;
+        line-height: 22px;
+      }
+      p {
+        color: #2A2B33;
+        font-size: 16px;
+        line-height: 24px;
+        opacity: .6;
+      }
+    }
+    .about-bust {
+      $width: 350 / 492 * $content-height; // original picture size 350 * 492
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -$content-height/2;
+      width: $width;
+      height: $content-height;
+    }
+    .about-circle,
+    .about-triangle,
+    .about-rect {
+      position: absolute;
+      opacity: 0;
+      transform: translateY(-60px);
+      transition: opacity 1s, transform 1s;
+    }
+    .about-circle {
+      $width: 251px;
+      top: 35%;
+      left: -$width/2;
+      width: $width;
+      height: 271px;
+      background: url('../img/about_circle.png') no-repeat center/100%;
+    }
+    .about-triangle {
+      $width: 193px;
+      bottom: -5%;
+      left: 48%;
+      width: $width;
+      height: 210px;
+      background: url('../img/about_triangle.png') no-repeat center/100%;
+      transition-delay: .15s;
+    }
+    .about-rect {
+      $width: 225px;
+      top: 28%;
+      right: -$width/2;
+      width: $width;
+      height: 245px;
+      background: url('../img/about_rect.png') no-repeat center/100%;
+      transition-delay: .3s;
+    }
+    &.active {
+      .about-circle,
+      .about-triangle,
+      .about-rect {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  // translate up when scroll down
+  &.active + .section-about {
+    .about-circle,
+    .about-triangle,
+    .about-rect {
+      transform: translateY(60px);
     }
   }
 }

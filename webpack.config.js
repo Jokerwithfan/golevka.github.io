@@ -53,6 +53,10 @@ module.exports = {
         }
       },
       {
+        test: /\.html$/,
+        loader: 'html-loader'
+      },
+      {
         test: /onepagescroll\.(min)?\.js$/,
         use: ['exports-loader?onePageScroll', 'script-loader'],
       },
