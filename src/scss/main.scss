@@ -58,6 +58,7 @@ main section {
     margin: 0 auto;
     width: $s-safe-width;
     height: 100%;
+    color: #2A2B33;
   }
   /* Home section */
   &.section-home {
@@ -89,7 +90,6 @@ main section {
       width: 545px;
       height: $content-height;
       padding: 120px 0 0 12px;
-      color: #2A2B33;
       background: url('../img/title_about.png') no-repeat top left/350px;
       h2 {
         $gap: 10px;
@@ -105,7 +105,6 @@ main section {
         line-height: 22px;
       }
       p {
-        color: #2A2B33;
         font-size: 16px;
         line-height: 24px;
         opacity: .6;
@@ -188,7 +187,6 @@ main section {
       width: 33.3%;
       height: $content-height;
       padding: 140px $gap 0;
-      color: #2A2B33;
       box-sizing: border-box;
       background: no-repeat $gap 0/120px;
       transform: translateY(-60px);
@@ -232,7 +230,6 @@ main section {
           margin-bottom: 32px;
           h3 {
             margin: 0 0 25px;
-            color: #2A2B33;
             font-size: 18px;
             line-height: 21px;
           }
@@ -270,6 +267,92 @@ main section {
   // move up when scroll down
   &.active + .section-ability .skill-panel {
     transform: translateY(60px);
+  }
+  /* Experience section */
+  &.section-experience {
+    background: url('../img/bg_exp.png') no-repeat center 30%/100%;
+    .section-content {
+      background: url('../img/title_exp.png') no-repeat left 25%/500px;
+      .exp-panel {
+        margin-top: 24%;
+        float: left;
+        width: 20%;
+        padding: 15px;
+        box-sizing: border-box;
+        h2 {
+          margin: 0 0 2px;
+          font-size: 18px;
+          line-height: 22px;
+        }
+        h3 {
+          margin: 0 0 5px;
+          font-size: 16px;
+          line-height: 20px;
+        }
+        h4 {
+          margin: 0 0 16px;
+          font-size: 16px;
+          line-height: 20px;
+          opacity: .6;
+        }
+        p {
+          font-size: 14px;
+          line-height: 18px;
+          opacity: .5;
+        }
+      }
+      .exp-triangle-1,
+      .exp-rect,
+      .exp-triangle-2 {
+        position: absolute;
+        z-index: 2;
+        opacity: 0;
+        transform: translateY(-60px);
+        transition: opacity 1s, transform 1s;
+      }
+      .exp-triangle-1 {
+        $width: 176px;
+        bottom: -8%;
+        left: 20%;
+        width: $width;
+        height: 233px;
+        background: url('../img/exp_triangle_1.png') no-repeat center/100%;
+      }
+      .exp-rect {
+        $width: 196px;
+        top: 8%;
+        left: 40%;
+        width: $width;
+        height: 250px;
+        background: url('../img/exp_rect.png') no-repeat center/100%;
+        transition-delay: .12s;
+      }
+      .exp-triangle-2 {
+        $width: 193px;
+        top: 18%;
+        right: 8%;
+        width: $width;
+        height: 244px;
+        background: url('../img/exp_triangle_2.png') no-repeat center/100%;
+        transition-delay: .24s;
+      }
+    }
+    &.active {
+      .exp-triangle-1,
+      .exp-rect,
+      .exp-triangle-2 {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  // move up when scroll down
+  &.active + .section-experience {
+    .exp-triangle-1,
+    .exp-rect,
+    .exp-triangle-2 {
+      transform: translateY(60px);
+    }
   }
 }
 
@@ -322,6 +405,12 @@ main section {
     left: 50%;
     bottom: 10%;
     margin-left: -$s-btn-width/2;
+  }
+  &.fixed-bottom-right {
+    @extend .fixed-bottom-center;
+    left: auto;
+    margin-left: 0;
+    right: 2%;
   }
 }
 
