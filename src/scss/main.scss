@@ -354,6 +354,72 @@ main section {
       transform: translateY(60px);
     }
   }
+  /* Contact section */
+  &.section-contact {
+    .section-content {
+      top: 30%;
+      height: 70%;
+      text-align: right;
+      .contact-column {
+        display: inline-block;
+        width: 290px;
+        text-align: left;
+        .contact-item {
+          display: block;
+          margin-bottom: 32px;
+          color: rgba(42,43,51,.8);
+          font-size: 16px;
+          line-height: 24px;
+          text-decoration: none;
+          &:hover {
+            color: #2A2B33;
+          }
+        }
+      }
+      .button {
+        margin-right: 30px;
+      }
+      .contact-triangle {
+        position: absolute;
+        bottom: 0;
+        background: url('../img/contact_bg.png') no-repeat center/100%;
+        transform: translateY(60px);
+        transition: transform 1s;
+        &.triangle-1 {
+          left: 10%;
+          width: 205px;
+          height: 135px;
+        }
+        &.triangle-2 {
+          left: 15%;
+          width: 454px;
+          height: 300px;
+          transition-delay: .12s;
+        }
+        &.triangle-3 {
+          left: 30%;
+          width: 326px;
+          height: 214px;
+          transition-delay: .24s;
+        }
+        &.triangle-4 {
+          left: 45%;
+          width: 406px;
+          height: 268px;
+          transition-delay: .36s;
+        }
+        &.triangle-5 {
+          right: 10%;
+          width: 192px;
+          height: 126px;
+          transition-delay: .48s;
+        }
+      }
+    }
+    &.active .contact-triangle {
+      transform: translateY(0);
+    }
+  }
 }
 
 /* Buttons */
@@ -412,6 +478,9 @@ main section {
     margin-left: 0;
     right: 2%;
   }
+  &.top::before {
+    transform: rotate(180deg);
+  }
 }
 
 /* Icons */
@@ -464,4 +533,36 @@ main section {
 }
 .icon-ai {
   background-image: url('../img/icon_ai.png');
+}
+.icon-phone,
+.icon-email,
+.icon-wechat,
+.icon-github,
+.icon-dribbble,
+.icon-behance {
+  $size: 18px;
+  margin-right: 10px;
+  width: $size;
+  height: $size;
+}
+.icon-phone {
+  background-image: url('../img/icon_phone.png');
+}
+.icon-email {
+  background-image: url('../img/icon_email.png');
+}
+.icon-wechat {
+  background-image: url('../img/icon_wechat.png');
+}
+.icon-github {
+  background-image: url('../img/icon_github.png');
+}
+.icon-dribbble {
+  background-image: url('../img/icon_dribbble.png');
+}
+.icon-behance {
+  background-image: url('../img/icon_behance.png');
+}
+.icon-phone {
+  background-image: url('../img/icon_phone.png');
 }
