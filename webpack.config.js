@@ -1,12 +1,14 @@
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/js/main.js',
   output: {
     path: path.join(__dirname, './'),
     filename: 'assets/js/[name].js',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -27,20 +29,6 @@ module.exports = {
       {
         test: /\.css$/,
         loader: ['style-loader', 'css-loader']
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: () => [autoprefixer]
-            }
-          },
-          'sass-loader'
-        ]
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/,
@@ -69,3 +57,39 @@ module.exports = {
     })
   ]
 };
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports.module.rules.push({
+    test: /\.scss$/,
+    use: ExtractTextPlugin.extract({
+      fallback: 'style-loader',
+      use: [
+        'css-loader',
+        {
+          loader: 'postcss-loader',
+          options: {
+            plugins: () => [autoprefixer],
+          },
+        },
+        'sass-loader',
+      ],
+    }),
+  });
+  module.exports.output.filename = 'assets/js/[name]_[chunkhash:7].js';
+  module.exports.plugins.push(new ExtractTextPlugin('assets/css/[name]_[contenthash:7].css'));
+} else {
+  module.exports.module.rules.push({
+    test: /\.scss$/,
+    use: [
+      'style-loader',
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          plugins: () => [autoprefixer]
+        }
+      },
+      'sass-loader'
+    ]
+  });
+}
