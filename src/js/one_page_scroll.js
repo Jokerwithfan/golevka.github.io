@@ -29,22 +29,25 @@ class OnePageScroll {
     this.beforeHookCb = null;
     this.afterHookCb = null;
 
-    Array.prototype.forEach.call(this.sections, (section, index) => {
-      section.classList.add('ops-section');
+    // wait for the hook function be bind
+    setTimeout(() => {
+      Array.prototype.forEach.call(this.sections, (section, index) => {
+        section.classList.add('ops-section');
 
-      // scroll to specific section if hash matches
-      if (currentHash && (section.getAttribute('hash') === currentHash || `${index + 1}` === currentHash)) {
-        this.scrollTo(index);
-        isHashScroll = true;
+        // scroll to specific section if hash matches
+        if (currentHash && (section.getAttribute('hash') === currentHash || `${index + 1}` === currentHash)) {
+          this.scrollTo(index);
+          isHashScroll = true;
+        }
+      });
+
+      document.addEventListener('mousewheel', mousewheelHandler);
+      document.addEventListener('DOMMouseScroll', mousewheelHandler);
+
+      if (!isHashScroll) {
+        this.scrollTo(0);
       }
-    });
-
-    document.addEventListener('mousewheel', mousewheelHandler);
-    document.addEventListener('DOMMouseScroll', mousewheelHandler);
-
-    if (!isHashScroll) {
-      this.scrollTo(0);
-    }
+    }, 0);
   }
   scrollDown() {
     if (this.current < this.sections.length - 1) {
@@ -53,7 +56,7 @@ class OnePageScroll {
   }
   scrollTo(index) {
     if (typeof this.beforeHookCb === 'function') {
-      this.beforeHookCb(this.current);
+      this.beforeHookCb(index);
     }
 
     this.sections[this.current].classList.remove('active');
@@ -68,7 +71,7 @@ class OnePageScroll {
 
     if (typeof this.afterHookCb === 'function') {
       setTimeout(() => {
-        this.afterHookCb(this.current);
+        this.afterHookCb(index);
       }, 1000);
     }
   }
