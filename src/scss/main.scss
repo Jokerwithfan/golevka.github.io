@@ -26,6 +26,7 @@ $s-btn-height: 36px;
       text-decoration: none;
       opacity: .6;
       transition: opacity .3s;
+      &.active,
       &:hover {
         opacity: 1;
       }
@@ -47,6 +48,7 @@ $s-btn-height: 36px;
       border-top: $height solid #FD23E1;
       border-bottom-width: $height;
       overflow: hidden;
+      transition: transform ease 1s;
     }
   }
 }
@@ -498,10 +500,11 @@ main section {
 }
 .icon-home {
   $size: 24px;
-  margin-right: 16px;
+  padding-right: 20px;
   width: $size;
   height: $size;
   background-image: url('../img/icon_home.png');
+  background-size: $size;
 }
 .icon-sketch,
 .icon-ps,
