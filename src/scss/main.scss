@@ -281,10 +281,11 @@ main section {
     .section-content {
       background: url('../img/title_exp.png') no-repeat left 25%/500px;
       .exp-panel {
-        margin-top: 24%;
+        position: relative;
+        top: 38%;
         float: left;
         width: 20%;
-        padding: 15px;
+        padding-right: 30px;
         box-sizing: border-box;
         h2 {
           margin: 0 0 2px;
